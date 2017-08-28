@@ -1,0 +1,16 @@
+#!/bin/bash
+# file: /etc/ppp/ip-up
+
+export PATH="/bin:/sbin:/usr/sbin:/usr/bin"
+
+OLDGW=`netstat -I ppp0 | tail -2 | grep -v "<Link#" | awk '{print $4}'`
+
+dscacheutil -flushcache
+
+route add 192.168.1.100 "${OLDGW}"
+route add 192.168.1.70 "${OLDGW}"
+route add 192.168.1.86 "${OLDGW}"
+route add 192.168.1.0/24 "${OLDGW}"
+route add 192.168.199.0/24 "${OLDGW}"
+route add 10.10.0.0/16 "${OLDGW}"
+route add 192.168.16.3 "${OLDGW}"

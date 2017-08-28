@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.tower.service.cache.dao.ibatis.mapper.CacheVersionMapper">
+	<resultMap id="CacheVersionRslMap" type="com.tower.service.cache.CacheVersion">
+
+		<id property="id" column="obj_name" />
+		<result property="recVersion" column="rec_version" />
+		<result property="tabVersion" column="tab_version" />
+	</resultMap>
+
+	<select id="queryById" parameterType="java.util.Map" resultMap="CacheVersionRslMap">
+		SELECT
+		obj_name,
+		rec_version,
+		tab_version
+		FROM
+		${TowerTabName}
+		<where>
+			and obj_name=#{id}
+		</where>
+		limit 1
+	</select>
+
+	<select id="queryByMap" parameterType="java.util.Map" resultMap="CacheVersionRslMap">
+		SELECT
+		obj_name,
+		rec_version,
+		tab_version
+		FROM
+		${TowerTabName}
+		<where>
+			<if test="id !=  null">
+				and obj_name=#{id}
+			</if>
+			<if test="recVersion !=  null">
+				and rec_version=#{recVersion}
+			</if>
+			<if test="tabVersion !=  null">
+				and tab_version=#{tabVersion}
+			</if>
+		</where>
+
+	</select>
+
+	<select id="queryidByMap" parameterType="java.util.Map"
+		resultType="java.lang.Long">
+		SELECT
+		obj_name
+		FROM
+		${TowerTabName}
+		<where>
+			<if test="id !=  null">
+				and obj_name=#{id}
+			</if>
+			<if test="recVersion !=  null">
+				and rec_version=#{recVersion}
+			</if>
+			<if test="tabVersion !=  null">
+				and tab_version=#{tabVersion}
+			</if>
+		</where>
+
+	</select>
+
+	<select id="countByMap" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		SELECT
+		count(*)
+		FROM
+		${TowerTabName}
+		<where>
+			<if test="id !=  null">
+				and obj_name=#{id}
+			</if>
+			<if test="recVersion !=  null">
+				and rec_version=#{recVersion}
+			</if>
+			<if test="tabVersion !=  null">
+				and tab_version=#{tabVersion}
+			</if>
+		</where>
+
+	</select>
+
+	<select id="pageQuery" parameterType="com.tower.service.dao.Page"
+		resultMap="CacheVersionRslMap" fetchSize="15">
+		SELECT
+		obj_name,
+		rec_version,
+		tab_version
+		FROM
+		${TowerTabName}
+		<where>
+			<if test="params !=  null">
+				<if test="params.id !=  null">
+					and obj_name=#{params.id}
+				</if>
+				<if test="params.recVersion !=  null">
+					and rec_version=#{params.recVersion}
+				</if>
+				<if test="params.tabVersion !=  null">
+					and tab_version=#{params.tabVersion}
+				</if>
+			</if>
+		</where>
+		<if test="orders !=  null"> order by ${orders} </if>
+		limit #{start},#{end}
+	</select>
+
+	<insert id="insert" parameterType="com.tower.service.cache.CacheVersion"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO ${TowerTabName} 
+		(
+		<trim suffix="" suffixOverrides=",">
+		
+		<if test="id !=null">
+			obj_name,
+		</if>
+		<if test="recVersion !=null">
+			rec_version,
+		</if>
+		<if test="tabVersion !=null">
+			tab_version,
+		</if>
+		</trim>
+		)
+		values (
+		<trim suffix="" suffixOverrides=",">
+		<if test="id !=null">
+			#{id},
+		</if>
+		<if test="recVersion !=null">
+			#{recVersion},
+		</if>
+		<if test="tabVersion !=null">
+			#{tabVersion},
+		</if>
+		</trim>
+		)
+		<!-- 
+		INSERT INTO ${TowerTabName}
+		(obj_name,rec_version,tab_version)
+		VALUES(#{id},#{recVersion},#{tabVersion})
+		 -->
+	</insert>
+	<insert id="incrRecVersion" parameterType="com.tower.service.cache.CacheVersion">
+		INSERT INTO
+		${TowerTabName}
+		(obj_name)
+		VALUES(#{id}) ON
+		DUPLICATE
+		KEY
+		UPDATE
+		rec_version = rec_version+1
+
+	</insert>
+
+	<insert id="incrTabVersion" parameterType="com.tower.service.cache.CacheVersion">
+		INSERT INTO
+		${TowerTabName}
+		(obj_name)
+		VALUES(#{id}) ON
+		DUPLICATE KEY
+		UPDATE
+		tab_version = tab_version+1
+
+	</insert>
+
+	<insert id="incrVersion" parameterType="com.tower.service.cache.CacheVersion">
+		INSERT INTO
+		${TowerTabName}
+		(obj_name)
+		VALUES(#{id}) ON
+		DUPLICATE KEY UPDATE
+		rec_version = rec_version+1,
+		tab_version = tab_version+1
+	</insert>
+
+	<update id="updateById" parameterType="java.util.Map">
+		update
+		${TowerTabName}
+		<set>
+			<if test="recVersion !=  null">
+				rec_version=#{recVersion},
+			</if>
+			<if test="tabVersion !=  null">
+				tab_version=#{tabVersion},
+			</if>
+		</set>
+		<where>
+			<if test="id !=  null">
+				and obj_name=#{id}
+			</if>
+		</where>
+
+	</update>
+
+	<update id="cmplxUpdate" parameterType="java.util.Map">
+		update
+		${TowerTabName}
+		<set>
+			<if test="updNewMap.id !=  null">
+				obj_name=#{updNewMap.id},
+			</if>
+			<if test="updNewMap.recVersion !=  null">
+				rec_version=#{updNewMap.recVersion},
+			</if>
+			<if test="updNewMap.tabVersion !=  null">
+				tab_version=#{updNewMap.tabVersion},
+			</if>
+		</set>
+		<where>
+			<if test="updCondMap.id !=  null">
+				and obj_name=#{updCondMap.id}
+			</if>
+			<if test="updCondMap.recVersion !=  null">
+				and rec_version=#{updCondMap.recVersion}
+			</if>
+			<if test="updCondMap.tabVersion !=  null">
+				and tab_version=#{updCondMap.tabVersion}
+			</if>
+		</where>
+
+	</update>
+
+	<delete id="deleteByMap" parameterType="java.util.Map">
+		DELETE
+		FROM
+		${TowerTabName}
+		<where>
+			<if test="id !=  null">
+				and obj_name=#{id}
+			</if>
+			<if test="recVersion !=  null">
+				and rec_version=#{recVersion}
+			</if>
+			<if test="tabVersion !=  null">
+				and tab_version=#{tabVersion}
+			</if>
+		</where>
+
+	</delete>
+
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.tower.soafw</groupId>
+		<artifactId>tower</artifactId>
+		<version>2.2.3-SNAPSHOT</version>
+	</parent>
+	<artifactId>tower-job</artifactId>
+	<name>tower-job</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.tower.soafw</groupId>
+			<artifactId>tower-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.tower.soafw</groupId>
+			<artifactId>tower-service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- 引入elastic-job核心模块 -->
+		<dependency>
+			<groupId>com.dangdang</groupId>
+			<artifactId>elastic-job-core</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		<!-- 使用springframework自定义命名空间时引入 -->
+		<dependency>
+			<groupId>com.dangdang</groupId>
+			<artifactId>elastic-job-spring</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+	</dependencies>
+</project>

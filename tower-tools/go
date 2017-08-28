@@ -1,0 +1,24 @@
+#!/bin/bash
+
+path=`pwd`
+echo $path
+if [ $# -eq 1 ];then
+	prefix="10.10.6"
+	suffix=$1
+elif [ $# -eq 2 ];then
+	prefix="192.168.1"
+	suffix="$2"
+else
+	prefix="192.168.1"
+	suffix="110"
+fi
+
+ip="$prefix.$suffix"
+
+echo "ip:$ip"
+
+if [ -z $1 ] ; then
+	ssh -A root@192.168.1.110
+else 
+	ssh -A root@192.168.1.110 -t "ssh root@$ip"
+fi

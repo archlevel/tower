@@ -1,0 +1,39 @@
+<entrys>
+	<!-- getString("name") 获取到 berniew -->
+	<entry>
+		<key>name</key>
+		<value>berniew</value>
+	</entry>
+	<!-- getString("id") 获取到 123 -->
+	<entry>
+		<key>Id</key>
+		<value>123</value>
+	</entry>
+	<!-- getString("424324") 获取到 一个map结构 -->
+	<entry>
+		<key>424324</key>
+		<entrys>
+			<!-- getString("424324.Id1") 获取到 xxxx -->
+			<entry>
+				<key>Id1</key>
+				<value>xxxx</value>
+			</entry>
+			<!-- getString("424324.Id2") 获取到 ttttt -->
+			<entry>
+				<key>Id2</key>
+				<value>ttttt</value>
+			</entry>
+			<!-- getString("424324.xxxx") 获取到 一个map结构 -->
+			<entry>
+				<key>xxxx</key>
+				<entrys>
+					<!-- getString("424324.xxxx.Id2") 获取到 tttttSS -->
+					<entry>
+						<key>Id2</key>
+						<value>tttttSS</value>
+					</entry>
+				</entrys>
+			</entry>
+		</entrys>
+	</entry>
+</entrys>
