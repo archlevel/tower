@@ -19,6 +19,7 @@ import com.tower.service.config.PrefixPriorityConfig;
 import com.tower.service.config.dict.ConfigFileTypeDict;
 import com.tower.service.config.utils.ConfigReloadEvent;
 import com.tower.service.config.utils.ConfigReloadObserver;
+import com.tower.service.config.utils.MailSender;
 import com.tower.service.log.LogUtils;
 import com.tower.service.util.StringUtil;
 
