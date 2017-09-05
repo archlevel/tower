@@ -602,12 +602,12 @@
 	<distributionManagement>
 		<repository>
 			<id>nexus-releases</id>
-			<url>http://mvn.leya.com/content/repositories/releases</url>
+			<url>http://maven.corp.tower.com:8082/content/repositories/releases</url>
 		</repository>
 
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
-			<url>http://mvn.leya.com/content/repositories/snapshots</url>
+			<url>http://maven.corp.tower.com:8082/nexus/content/repositories/mogo2-snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 </project>

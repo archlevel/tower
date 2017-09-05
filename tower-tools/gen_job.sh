@@ -36,28 +36,28 @@ fi
 
 cd $projectid
 
-if [ ! -d "$app_home_dir/$1/$1-util" ]; then
-	projectcommon=$projectid-util
-	mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectcommon -Dcompany=$company
-	echo $projectcommon build success
-fi
+#if [ ! -d "$app_home_dir/$1/$1-util" ]; then
+#	projectcommon=$projectid-util
+#	mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectcommon -Dcompany=$company
+#	echo $projectcommon build success
+#fi
 
 #if [ ! -d "$app_home_dir/$1/$1-config" ]; then
 #	projectconfig=$projectid-config
 #	mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectconfig -Dcompany=$company
 #	echo $projectconfig build success
 #fi
-if [ ! -d "$app_home_dir/$1/$1-domain" ]; then
-	projectdomain=$projectid-domain
-	mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectdomain -Dcompany=$company
-	echo $projectdomain build success
-fi
+#if [ ! -d "$app_home_dir/$1/$1-domain" ]; then
+#	projectdomain=$projectid-domain
+#	mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectdomain -Dcompany=$company
+#	echo $projectdomain build success
+#fi
 
-if [ ! -d "$app_home_dir/$1/$1-service" ]; then
-	projectservice=$projectid-service
-	mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectservice -Dcompany=$company
-	echo $projectservice build success
-fi
+#if [ ! -d "$app_home_dir/$1/$1-service" ]; then
+#	projectservice=$projectid-service
+#	mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectservice -Dcompany=$company
+#	echo $projectservice build success
+#fi
 
 projectjob=$projectid-job$suffix
 mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectjob -Dcompany=$company
@@ -68,4 +68,4 @@ echo $projectjob build success
 cd ../tower/tower-config-maven-plugin
 
 ##config
-mvn -B tower-config:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=AllIn -DgenModule=job -DmoduleSuffix=$suffix -Dcompany=$company -X
+mvn -B tower-config:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=AllIn -DgenModule=job -DmoduleSuffix=$suffix -Dcompany=$company -Dscop=job -X

@@ -304,12 +304,12 @@ public class SoafwConfigMojo extends AbstractMojo {
 					&& (("job".equalsIgnoreCase(module)
 							&& !module.equals(currentModule) && !"root"
 								.equalsIgnoreCase(currentModule))
-							|| ("web".equalsIgnoreCase(module)
+					|| ("web".equalsIgnoreCase(module)
 									&& !module.equals(currentModule) && !"root"
-										.equalsIgnoreCase(currentModule)) || (("service"
-							.equalsIgnoreCase(module)
-							&& ("job".equalsIgnoreCase(currentModule) || "web"
-									.equalsIgnoreCase(currentModule)) && !"root"
+										.equalsIgnoreCase(currentModule))
+					|| (("service".equalsIgnoreCase(module)
+							&& ("job".equalsIgnoreCase(currentModule)
+					|| "web".equalsIgnoreCase(currentModule)) && !"root"
 								.equalsIgnoreCase(currentModule))))) {
 				continue;
 			}

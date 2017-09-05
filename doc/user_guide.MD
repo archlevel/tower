@@ -14,6 +14,9 @@
 + 本地开发数据库域名：db.corp.tower.com
 	+ 创建soafw_db数据库
 	+ 修改tower-config/src/main/resource/META-INF/tower.properties内的数据库配置信息
++ 修复本机hosts文件
+    + 私服库服务ip maven.corp.tower.com
+    + 或者建立本地域名解析 maven.corp.tower.com 解析到 私服库服务ip
 + 备注：个别java包可能需要在互联网上单独下载，公共的私服服务上可能没有；
 	+ dubbo 2.8.4.jar [dubbox]
 	+ memcached-2.0.1.jar
@@ -92,7 +95,7 @@
 				<repository>
 					<id>central</id>
 					<name>central</name>
-					<url>http://mvn.leya.com/content/repositories/central/</url>
+					<url>http://maven.corp.tower.com:8082/content/repositories/central/</url>
 					<releases>
 							<enabled>true</enabled>
 					</releases>
@@ -103,7 +106,7 @@
 				<repository>
 					<id>releases</id>
 					<name>releases</name>
-					<url>http://mvn.leya.com/content/repositories/releases</url>
+					<url>http://maven.corp.tower.com:8082/content/repositories/releases</url>
 					<releases>
 							<enabled>true</enabled>
 					</releases>
@@ -114,7 +117,7 @@
 				<repository>
 					<id>public</id>
 					<name>public</name>
-					<url>http://mvn.leya.com/content/groups/public/</url>
+					<url>http://maven.corp.tower.com:8082/content/groups/public/</url>
 					<releases>
 						<enabled>true</enabled>
 					</releases>
@@ -125,7 +128,7 @@
 				<repository>
 					<id>thirdparty</id>
 					<name>thirdparty</name>
-					<url>http://mvn.leya.com/content/repositories/thirdparty/</url>
+					<url>http://maven.corp.tower.com:8082/content/repositories/thirdparty/</url>
 					<releases>
 							<enabled>true</enabled>
 					</releases>
@@ -136,7 +139,7 @@
 				<repository>
 					<id>snapshots</id>
 					<name>snapshots</name>
-					<url>http://mvn.leya.com/content/repositories/snapshots/</url>
+					<url>http://maven.corp.tower.com:8082/content/repositories/snapshots/</url>
 					<releases>
 							<enabled>true</enabled>
 					</releases>
@@ -149,7 +152,7 @@
 				<pluginRepository>
 					<id>nexus</id>
 					<name>Nexus</name>
-					<url>http://mvn.leya.com/content/groups/public/</url>
+					<url>http://maven.corp.tower.com:8082/content/groups/public/</url>
 					<releases>
 						<enabled>true</enabled>
 					</releases>
@@ -160,7 +163,7 @@
 				<pluginRepository>
 					<id>thirdparty</id>
 					<name>thirdparty</name>
-					<url>http://mvn.leya.com/content/repositories/thirdparty/</url>
+					<url>http://maven.corp.tower.com:8082/content/repositories/thirdparty/</url>
 					<releases>
 							<enabled>true</enabled>
 					</releases>

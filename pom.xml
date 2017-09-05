@@ -502,7 +502,7 @@
 
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
-			<url>http://maven.corp.tower.com:8082/nexus/content/repositories/snapshots</url>
+			<url>http://maven.corp.tower.com:8082/nexus/content/repositories/mogo2-snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 	<name>tower</name>

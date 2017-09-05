@@ -47,6 +47,7 @@ fi
 #	mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectconfig -Dcompany=$company
 #	echo $projectconfig build success
 #fi
+
 if [ ! -d "$app_home_dir/$1/$1-domain" ]; then
 	projectdomain=$projectid-domain
 	mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectdomain -Dcompany=$company
@@ -68,4 +69,4 @@ echo $projectwebid build success
 cd ../tower/tower-config-maven-plugin
 
 ##config
-mvn -B tower-config:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=AllIn -DgenModule=web -DmoduleSuffix=$3 -Dcompany=$company -X
+mvn -B tower-config:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=AllIn -DgenModule=web -DmoduleSuffix=$3 -Dcompany=$company -Dscop=web -X

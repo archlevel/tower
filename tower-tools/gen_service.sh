@@ -75,12 +75,22 @@ projectservice=$projectid-service-impl
 mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectservice -Dcompany=$company
 echo $projectservice build success
 
+if [ ! -d "$app_home_dir/$1/$1-facade" ]; then
+	projectservice=$projectid-service
+	mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectservice -Dcompany=$company
+	echo $projectservice build success
+fi
+
+projectservice=$projectid-facade-impl
+mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectservice -Dcompany=$company
+echo $projectservice build success
+
 ##配置文件生成
 
 cd ../tower/tower-config-maven-plugin
 
 ##config
-mvn -B tower-config:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=AllIn -DgenModule=service -DmoduleSuffix=$3 -Dcompany=$company -X
+mvn -B tower-config:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=AllIn -DgenModule=service -DmoduleSuffix=$3 -Dcompany=$company -Dscop=service -X
 
 cd ../../soafw/tools/
 

@@ -14,7 +14,7 @@ mkdir -p ../../projects/
 cd ../../projects/
 
 projectid=$1
-mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectid 
+mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectid -Dscop=all
 cd $projectid
 rm -rf src
 echo parent build success
@@ -55,6 +55,20 @@ projectservice=$projectid-service
 mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectservice -Dcompany=$company
 echo $projectservice build success
 
+projectservice=$projectid-service-impl
+mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectservice -Dcompany=$company
+echo $projectservice build success
+
+if [ ! -d "$app_home_dir/$1/$1-facade" ]; then
+	projectservice=$projectid-service
+	mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectservice -Dcompany=$company
+	echo $projectservice build success
+fi
+
+projectservice=$projectid-facade-impl
+mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectservice -Dcompany=$company
+echo $projectservice build success
+
 projectjob=$projectid-job
 if [ -n "$3" ]; then
 	projectjob=$projectjob-$3
@@ -62,10 +76,6 @@ fi
 
 mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectjob -Dcompany=$company
 echo $projectjob build success
-
-projectservice=$projectid-service-impl
-mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectservice -Dcompany=$company
-echo $projectservice build success
 
 projectwebid=$projectid-web
 mvn -B archetype:generate -DarchetypeCatalog=locale -DgroupId=com.$company.service.$projectid -DartifactId=$projectwebid -DarchetypeArtifactId=maven-archetype-webapp -Dcompany=$company
@@ -76,4 +86,4 @@ echo $projectwebid build success
 cd ../tower/tower-config-maven-plugin
 
 ##config
-mvn -B tower-config:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=AllIn -DmoduleSuffix=$3 -Dcompany=$company -X
+mvn -B tower-config:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=all -DmoduleSuffix=$3 -Dcompany=$company -Dscop=all -X
