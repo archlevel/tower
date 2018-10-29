@@ -16,8 +16,8 @@ public class ConfigUtil {
     
     private static Map<String,ConfigUtil> utils= new ConcurrentHashMap<String,ConfigUtil>();
 
-    private Map<String, FileWatchdog> watchs = new ConcurrentHashMap<String, FileWatchdog>();
-    private Map<String, List<IConfigListener>> configListeners =
+    private static Map<String, FileWatchdog> watchs = new ConcurrentHashMap<String, FileWatchdog>();
+    private static Map<String, List<IConfigListener>> configListeners =
             new ConcurrentHashMap<String, List<IConfigListener>>();
     private String storeType;
     private ConfigUtil(String storeType) {
