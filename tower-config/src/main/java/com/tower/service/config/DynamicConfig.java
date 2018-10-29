@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.annotation.PostConstruct;
 
@@ -76,6 +77,9 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
     private String zkServers = null;
     private String ST_Type = "zookeeper";
 
+    private static Map<String,GeneralConfigGroup> configs =
+            new ConcurrentHashMap<String, GeneralConfigGroup>();
+
     public DynamicConfig() {
     }
 
@@ -118,6 +122,10 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
     }
 
     public GeneralConfigGroup $build() {
+
+        if(configs.containsKey(this._settingFileName)){//一个_settingFileName在一个jvm内只有一个group
+            return configs.get(_settingFileName);
+        }
 
         GeneralConfigGroup group = null;
         profile = createFileProfile(this.getType());
