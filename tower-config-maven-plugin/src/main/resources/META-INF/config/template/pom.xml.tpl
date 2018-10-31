@@ -600,6 +600,7 @@
 		</pluginManagement>
 	</build>
 	<distributionManagement>
+	    <!--
 		<repository>
 			<id>nexus-releases</id>
 			<url>http://maven.corp.tower.com:8082/content/repositories/releases</url>
@@ -607,7 +608,8 @@
 
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
-			<url>http://maven.corp.tower.com:8082/nexus/content/repositories/mogo2-snapshots</url>
+			<url>http://maven.corp.tower.com:8082/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
+		-->
 	</distributionManagement>
 </project>

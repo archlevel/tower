@@ -2,6 +2,7 @@ package com.tower.service.config.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Properties;
 
 public class TowerConfig {
@@ -17,11 +18,21 @@ public class TowerConfig {
     }
     private static Properties loadProperties(){
     	towerConfig=new Properties();
+        InputStream is = null;
         try {
-        	InputStream is = TowerConfig.class.getResourceAsStream("/META-INF/tower.properties");
-        	towerConfig.load(is);
+            is = new URL("file:///config/tower.properties").openConnection().getInputStream();
+            System.out.println("tower.properties loaded from 'file:///config/tower.properties'");
         } catch (IOException e) {
-        	e.printStackTrace();
+            is = TowerConfig.class.getResourceAsStream("/META-INF/tower.properties");
+            System.out.println("tower.properties loaded from '/META-INF/tower.properties'");
+        }
+        finally {
+            try {
+                towerConfig.load(is);
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return towerConfig;
     }

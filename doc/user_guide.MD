@@ -21,163 +21,22 @@
 	+ dubbo 2.8.4.jar [dubbox]
 	+ memcached-2.0.1.jar
 + 配置maven配置文件settings.xml
-<p>详细配置信息</p>
+<p>调整server配置信息，并替换maven配置文件</p>
 
 ```
-<?xml version="1.0" encoding="UTF-8"?>
-<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
-	<!-- <localRepository>D:\.m2\repository</localRepository> -->
-
-	<pluginGroups>
-		<pluginGroup>com.tower.soafw</pluginGroup>
-	</pluginGroups>
-
-	<proxies>
-	</proxies>
-
-	<servers>
-		<server>
-			<id>nexus-releases</id>
-			<username>admin</username>
-			<password>admin123</password>
-		</server>
-		<server>
-			<id>nexus-snapshots</id>
-			<username>admin</username>
-			<password>admin123</password>
-		</server>
-		<server>
-			<id>deploymentRepo</id>
-			<username>admin</username>
-			<password>admin123</password>
-		</server>
-	</servers>
-
-	<mirrors>
-		<mirror>
-			<id>UK</id>
-			<name>UK Center</name>
-			<url>http://uk.maven.org/maven2</url>
-			<mirrorOf>central</mirrorOf>
-		</mirror>
-		<mirror>
-			<id>US Central</id>
-			<name>US Center</name>
-			<url>http://repo1.maven.org/maven2</url>
-			<mirrorOf>central</mirrorOf>
-		</mirror>
-		<mirror>
-			<id>maven2</id>
-			<name>maven2 Center</name>
-			<url>http://central.maven.org/maven2</url>
-			<mirrorOf>central</mirrorOf>
-		</mirror>
-	</mirrors>
-
-	<profiles>
-		<profile>
-				<id>jdk-1.7</id>
-				<activation>
-				<activeByDefault>true</activeByDefault>
-					<jdk>1.7</jdk>
-				</activation>
-				<properties>
-					<maven.compiler.source>1.7</maven.compiler.source>
-					<maven.compiler.target>1.7</maven.compiler.target>
-					<maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>
-				</properties>
-			</profile>
-		<profile>
-			<id>nexus</id>
-			<repositories>
-				<repository>
-					<id>central</id>
-					<name>central</name>
-					<url>http://maven.corp.tower.com:8082/content/repositories/central/</url>
-					<releases>
-							<enabled>true</enabled>
-					</releases>
-					<snapshots>
-							<enabled>true</enabled>
-					</snapshots>
-				</repository>
-				<repository>
-					<id>releases</id>
-					<name>releases</name>
-					<url>http://maven.corp.tower.com:8082/content/repositories/releases</url>
-					<releases>
-							<enabled>true</enabled>
-					</releases>
-					<snapshots>
-							<enabled>true</enabled>
-					</snapshots>
-				</repository>
-				<repository>
-					<id>public</id>
-					<name>public</name>
-					<url>http://maven.corp.tower.com:8082/content/groups/public/</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-				<repository>
-					<id>thirdparty</id>
-					<name>thirdparty</name>
-					<url>http://maven.corp.tower.com:8082/content/repositories/thirdparty/</url>
-					<releases>
-							<enabled>true</enabled>
-					</releases>
-					<snapshots>
-							<enabled>true</enabled>
-					</snapshots>
-				</repository>
-				<repository>
-					<id>snapshots</id>
-					<name>snapshots</name>
-					<url>http://maven.corp.tower.com:8082/content/repositories/snapshots/</url>
-					<releases>
-							<enabled>true</enabled>
-					</releases>
-					<snapshots>
-							<enabled>true</enabled>
-					</snapshots>
-				</repository>
-			</repositories>
-			<pluginRepositories>
-				<pluginRepository>
-					<id>nexus</id>
-					<name>Nexus</name>
-					<url>http://maven.corp.tower.com:8082/content/groups/public/</url>
-					<releases>
-						<enabled>true</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</pluginRepository>
-				<pluginRepository>
-					<id>thirdparty</id>
-					<name>thirdparty</name>
-					<url>http://maven.corp.tower.com:8082/content/repositories/thirdparty/</url>
-					<releases>
-							<enabled>true</enabled>
-					</releases>
-					<snapshots>
-							<enabled>true</enabled>
-					</snapshots>
-				</pluginRepository>
-			</pluginRepositories>
-		</profile>
-	</profiles>
-	<activeProfiles>
-		<activeProfile>nexus</activeProfile>
-	</activeProfiles>
-</settings>
+<servers>
+    <server>
+        <id>tower</id>
+        <username>tower</username>
+        <password>I2f2ATY492Iu71x8T4C4rZ5x</password>
+    </server>
+    <server>
+        <id>tomcat</id>
+        <username>admin</username>
+        <password>admin</password>
+    </server>
+</servers>
+    
 ```
 
 ### 安装Jenkins（构件）
@@ -223,6 +82,12 @@
 + 每条日志信息都会自动输出当前请求ID(当当前请求没有请求ID时，框架会自动产生，并且一直跟着到最后：追加到sql语句的备注部分)
 
 ### tower－config
+
++ run mvn to install org.eclipse.m2e plugin
+
+```mvn archetype:generate -DgroupId=org.eclipse.m2e -DartifactId=lifecycle-mapping \
+   >  -Dversion=1.0.0 -DarchetypeArtifactId=maven-archetype-mojo
+   ```
 
 + 配置文件存储目录：
 	+ 配置目录有三级，安优先级列表如下，序号最小优先级最高

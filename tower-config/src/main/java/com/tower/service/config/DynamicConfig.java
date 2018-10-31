@@ -69,11 +69,7 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
     private Configuration delegate;
     private String encoding = "utf-8";
     private boolean delimiterParsingDisabled;
-    //private List<String> configFiles = new ArrayList<String>();
     private GeneralConfigGroup group = null;
-    private FileConfigProfile profile = null;
-    private static ZookeeperConfigProfile zkProfile = null;
-    private static ZookeeperConfigProfile appZKProfile = null;
     private String zkServers = null;
     private String ST_Type = "zookeeper";
 
@@ -84,7 +80,9 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
     }
 
     /**
-     * @param fileStoreType file:本地,http:http服务,https:
+     *
+     * @param fileName 文件名前缀
+     * @param type 文件扩展名
      */
     public DynamicConfig(String fileName, String type) {
         this.setFileName(fileName);
@@ -98,6 +96,7 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
         this.group = $build();
         if (group != null) {
             tmp = new HashMap(group);
+            configs.put(this._settingFileName,group);
         } else {
             tmp = new HashMap();
         }
@@ -128,7 +127,7 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
         }
 
         GeneralConfigGroup group = null;
-        profile = createFileProfile(this.getType());
+        FileConfigProfile profile = createFileProfile(this.getType());
         /**
          * 开发配置
          */
@@ -187,6 +186,7 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
          */
         // if (ST_ZK.equalsIgnoreCase(storeType)) {
         if (isZookeeper()) {
+            ZookeeperConfigProfile zkProfile = null;
             try {
                 if (zkProfile == null) {
                     zkProfile = createZookeeperProfile(System.getProperty(SYS_CONFIG_DIR, SYS_CONFIG_DIR_DEF));
@@ -251,7 +251,7 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
              */
             // if (ST_ZK.equalsIgnoreCase(storeType)) {
             if (isZookeeper()) {
-
+                ZookeeperConfigProfile appZKProfile = null;
                 try {
 
                     if (appZKProfile == null && !StringUtil.isEmpty(getAppHomeDir())) {
