@@ -16,6 +16,7 @@ mkdir -p ../../projects/
 cd ../../projects/
 
 projectid=$1
+
 mvn -B archetype:generate -DgroupId=com.$company.service.$projectid -DartifactId=$projectid -Dscop=all
 cd $projectid
 rm -rf src
@@ -85,11 +86,9 @@ echo $projectwebid build success
 
 ##配置文件生成
 
-cd "$tools"
-
-cd ../../tower/tower-config-maven-plugin
+cd ../tower/tower-config-maven-plugin
 
 echo "`pwd`"
 
 ##config
-mvn -B tower-config:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=all -DmoduleSuffix=$3 -Dcompany=$company -Dscop=all -X
+mvn -B com.tower.soafw:tower-config-maven-plugin:2.2.3-SNAPSHOT:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=all -DmoduleSuffix=$3 -Dcompany=$company -Dscop=all -X

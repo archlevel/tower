@@ -90,8 +90,8 @@ echo $projectservice build success
 cd ../tower/tower-config-maven-plugin
 
 ##config
-mvn -B tower-config:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=AllIn -DgenModule=service -DmoduleSuffix=$3 -Dcompany=$company -Dscop=service -X
+mvn -B com.tower.soafw:tower-config-maven-plugin:2.2.3-SNAPSHOT:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=AllIn -DgenModule=service -DmoduleSuffix=$3 -Dcompany=$company -Dscop=service -X
 
-cd ../../soafw/tools/
+cd ../tower-tools/
 
 sh ./sed-pom.sh $1

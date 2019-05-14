@@ -37,11 +37,11 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<memcached.version>2.0.1</memcached.version>
+		<memcached.version>2.6.6</memcached.version>
 		<mybatis.version>3.2.8</mybatis.version>
 		<mysql.version>5.1.26</mysql.version>
 		<mail.version>1.4.1</mail.version>
-		<jedis.version>3.0.0</jedis.version>
+		<jedis.version>3.0.1</jedis.version>
 		<junit.version>4.11</junit.version>
 		<json-lib.version>2.2.3</json-lib.version>
 		<spring.version>4.2.4.RELEASE</spring.version>

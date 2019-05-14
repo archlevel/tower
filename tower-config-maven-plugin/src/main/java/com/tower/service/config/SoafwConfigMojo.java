@@ -81,7 +81,7 @@ public class SoafwConfigMojo extends AbstractMojo {
 		desc = (PluginDescriptor) this.getPluginContext().get(
 				"pluginDescriptor");
 
-		getServiceInfo();
+		//getServiceInfo();
 
 		this.getLog().info(
 				format(model, groupId, artifactId, String.valueOf(startPort),

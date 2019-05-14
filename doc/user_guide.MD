@@ -1,43 +1,20 @@
 ## 框架使用说明
 
-### 搭建本地私服库（nexus）
-+ 本地私服库域名
-	+ 修改setting.xml，替换repositories中的url的内容为真实maven私服中的public
-		+ public url ![maven public url](maven/public_url.png)
-	+ 修改tower/pom.xml，替换release url及snapshot url
-		+ release url ![maven release url](maven/release_url.png)
-		+ snapshot url ![maven snapshot url](maven/snapshots_url.png)
-	+ 修改tower-config-maven-plugin/src/main/resources/META-INF/config/template/pom.xml.tpl，替换release url及snapshot url
-		+ release url ![maven release url](maven/release_url.png)
-		+ snapshot url ![maven snapshot url](maven/snapshots_url.png)
 
-+ 本地开发数据库域名：db.corp.tower.com
-	+ 创建soafw_db数据库
-	+ 修改tower-config/src/main/resource/META-INF/tower.properties内的数据库配置信息
+### 前置条件
++ 安装好JDK
+    + 设置好JAVA_HOME，并添加到path环境变量上
++ 安装好maven
+    + 把maven的bin目录加到path环境变量上
+
+### 本地环境设置
 + 修复本机hosts文件
     + 私服库服务ip maven.corp.tower.com
     + 或者建立本地域名解析 maven.corp.tower.com 解析到 私服库服务ip
-+ 备注：个别java包可能需要在互联网上单独下载，公共的私服服务上可能没有；
-	+ dubbo 2.8.4.jar [dubbox]
-	+ memcached-2.0.1.jar
-+ 配置maven配置文件settings.xml
-<p>调整server配置信息，并替换maven配置文件</p>
 
-```
-<servers>
-    <server>
-        <id>tower</id>
-        <username>tower</username>
-        <password>I2f2ATY492Iu71x8T4C4rZ5x</password>
-    </server>
-    <server>
-        <id>tomcat</id>
-        <username>admin</username>
-        <password>admin</password>
-    </server>
-</servers>
-    
-```
+### 安装第三方jar；
+    + cd tower-tools 目录
+    + 执行 install.sh命令
 
 ### 安装Jenkins（构件）
 
@@ -82,12 +59,6 @@
 + 每条日志信息都会自动输出当前请求ID(当当前请求没有请求ID时，框架会自动产生，并且一直跟着到最后：追加到sql语句的备注部分)
 
 ### tower－config
-
-+ run mvn to install org.eclipse.m2e plugin
-
-```mvn archetype:generate -DgroupId=org.eclipse.m2e -DartifactId=lifecycle-mapping \
-   >  -Dversion=1.0.0 -DarchetypeArtifactId=maven-archetype-mojo
-   ```
 
 + 配置文件存储目录：
 	+ 配置目录有三级，安优先级列表如下，序号最小优先级最高

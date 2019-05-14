@@ -27,7 +27,7 @@ import redis.clients.jedis.JedisPoolConfig;
 import redis.clients.jedis.JedisShardInfo;
 import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.ShardedJedisPool;
-import redis.clients.jedis.params.set.SetParams;
+import redis.clients.jedis.params.SetParams;
 
 import com.tower.service.cache.ICache;
 import com.tower.service.cache.impl.CacheConfig;
