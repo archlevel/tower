@@ -569,7 +569,7 @@ public class SoafwTesterMojo extends AbstractMojo {
 
 		Class[] types = method.getParameterTypes();
 		int size = types == null ? 0 : types.length;
-		StringBuffer paramsSb = new StringBuffer("\"" + methodName + "\"");
+		StringBuffer paramsSb = new StringBuffer();
 		for (int i = 0; i < size; i++) {
 
 			paramsSb.append(types[i].getSimpleName());
@@ -582,7 +582,7 @@ public class SoafwTesterMojo extends AbstractMojo {
 				+ paramsSb.toString()+")";
 
 		tmpMethodBuffer.append("\t@SoaFwTest(id=\"" + idStr + "\", method=\""
-				+ methodName + "\", params={" + paramsSb.toString() + "})\n");
+				+ methodName +(paramsSb.length()==0?"\")\n":"\",params={\"" + paramsSb.toString() + "\"})\n"));
 
 		if (cnt > 0) {
 			methodName = methodName + "$" + cnt;

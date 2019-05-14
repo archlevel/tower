@@ -600,6 +600,7 @@
 		</pluginManagement>
 	</build>
 	<distributionManagement>
+	    <!--当需要deploy时需要开启；可以修改hosts或者域名解析的形式进行-->
 	    <!--
 		<repository>
 			<id>nexus-releases</id>
