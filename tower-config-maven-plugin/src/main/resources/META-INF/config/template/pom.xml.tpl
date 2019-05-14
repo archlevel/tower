@@ -39,7 +39,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
-		<memcached.version>2.0.1</memcached.version>
+		<memcached.version>2.6.6</memcached.version>
 		<mybatis.version>3.2.8</mybatis.version>
 		<mysql.version>5.1.26</mysql.version>
 		<mail.version>1.4.1</mail.version>
@@ -65,7 +65,7 @@
 		<aspectj.version>1.8.4</aspectj.version>
 		<unirest-java.version>1.3.26</unirest-java.version>
 		<jackson-databind.version>2.4.2</jackson-databind.version>
-		<dubbo.version>2.8.4</dubbo.version>
+		<dubbo.version>2.6.6</dubbo.version>
 		<zookeeper.version>3.4.6</zookeeper.version>
 		<zkclient.version>0.4</zkclient.version>
 		
