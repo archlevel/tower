@@ -176,6 +176,11 @@ public class SoafwTesterMojo extends AbstractMojo {
 		this.getLog().error("异常命名类：" + errorImpl);
 	}
 
+	/**
+	 * 生成完整的测试类结构
+	 * @param basedPath
+	 * @param className
+	 */
 	private void genTest(String basedPath, String className) {
 		// 该文件没有建立对应测试用例 为实现测试
 		this.getLog().info("检测到" + className + "没有测试实现");
@@ -315,7 +320,7 @@ public class SoafwTesterMojo extends AbstractMojo {
 				}
 
 				int mlen = 0;
-				if (methods != null && (mlen = methods.length) > 0) {
+				if (methods != null && (mlen = methods.length) > 0) {//提取所有业务类的publish接口方法
 
 					StringBuffer methodBuf = new StringBuffer();
 
@@ -351,7 +356,7 @@ public class SoafwTesterMojo extends AbstractMojo {
 			this.getLog().info("测试类" + tstCls.getSimpleName() + "的方法数量：" + len);
 
 			/**
-			 * 提起所有public的方法
+			 * 提起所有没有实现test方法的public的方法
 			 */
 			for (int m = 0; m < len; m++) {
 
@@ -366,12 +371,12 @@ public class SoafwTesterMojo extends AbstractMojo {
 
 				String id = test.id();
 
-				if (methodDefs.containsKey(id)) {
+				if (methodDefs.containsKey(id)) {//当已经存在测试代码时，不必再生成新的
 					methodDefs.remove(id);
 				}
 			}
 
-			if ((len = methodDefs.size()) == 0) {
+			if ((len = methodDefs.size()) == 0) {//测试方法都已经完全生成，没有待生成的测试方法；
 				return;
 			}
 
@@ -545,7 +550,15 @@ public class SoafwTesterMojo extends AbstractMojo {
 		}
 	}
 
-	private void addMethod(Map<String, String> methodMap,
+	/**
+	 *
+	 * @param methodDefs 业务类的公共方法集合
+	 * @param methodBuffer
+	 * @param method
+	 * @param cnt
+	 * @throws NotFoundException
+	 */
+	private void addMethod(Map<String, String> methodDefs,
 			StringBuffer methodBuffer, Method method, int cnt)
 			throws NotFoundException {
 		String methodName = method.getName();
@@ -558,14 +571,17 @@ public class SoafwTesterMojo extends AbstractMojo {
 		int size = types == null ? 0 : types.length;
 		StringBuffer paramsSb = new StringBuffer("\"" + methodName + "\"");
 		for (int i = 0; i < size; i++) {
-			paramsSb.append(",");
-			paramsSb.append("\"" + types[i].getSimpleName() + "\"");
+
+			paramsSb.append(types[i].getSimpleName());
+			if(i<size-1){
+				paramsSb.append(",");
+			}
 		}
 
-		String id = MD5Util.md5Hex("\"" + methodName + "\""
-				+ paramsSb.toString() + ")");
+		String idStr = methodName + "("
+				+ paramsSb.toString()+")";
 
-		tmpMethodBuffer.append("\t@SoaFwTest(id=\"" + id + "\", method=\""
+		tmpMethodBuffer.append("\t@SoaFwTest(id=\"" + idStr + "\", method=\""
 				+ methodName + "\", params={" + paramsSb.toString() + "})\n");
 
 		if (cnt > 0) {
@@ -584,7 +600,7 @@ public class SoafwTesterMojo extends AbstractMojo {
 				+ " test not implemented\");\n");
 		tmpMethodBuffer.append("\t}\n\n");
 
-		methodMap.put(id, tmpMethodBuffer.toString());
+		methodDefs.put(idStr, tmpMethodBuffer.toString());
 
 		methodBuffer.append(tmpMethodBuffer);
 	}
