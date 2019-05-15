@@ -68,4 +68,4 @@ echo $projectjob build success
 cd ../tower/tower-config-maven-plugin
 
 ##config
-mvn -B com.tower.soafw:tower-config-maven-plugin:1.0.0-SNAPSHOT:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=AllIn -DgenModule=job -DmoduleSuffix=$suffix -Dcompany=$company -Dscop=job -X
+mvn -B com.tower.soafw:tower-config-maven-plugin:2.0.0-SNAPSHOT:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=AllIn -DgenModule=job -DmoduleSuffix=$suffix -Dcompany=$company -Dscop=job -X
