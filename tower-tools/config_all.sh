@@ -24,4 +24,4 @@ echo "`pwd`"
 cd ../tower/tower-config-maven-plugin
 
 ##config
-mvn -B com.tower.soafw:tower-config-maven-plugin:2.2.3-SNAPSHOT:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=all -DmoduleSuffix=$3 -Dcompany=$company -Dscop=all -X
+mvn -B com.tower.soafw:tower-config-maven-plugin:1.0.0-SNAPSHOT:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=all -DmoduleSuffix=$3 -Dcompany=$company -Dscop=all -X

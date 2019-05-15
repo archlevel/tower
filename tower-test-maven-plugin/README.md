@@ -15,13 +15,13 @@
 	<dependency>
 		<groupId>com.tower.soafw</groupId>
 		<artifactId>tower-annotation</artifactId>
-		<version>2.2.3-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</dependency>
 		
 	<plugin>
 		<groupId>com.tower.soafw</groupId>
 			<artifactId>tower-test-maven-plugin</artifactId>
-			<version>2.2.3-SNAPSHOT</version>
+			<version>1.0.0-SNAPSHOT</version>
 			<configuration>
 				<!--是否启用-->
 				<!--

@@ -69,4 +69,4 @@ echo $projectwebid build success
 cd ../tower/tower-config-maven-plugin
 
 ##config
-mvn -B com.tower.soafw:tower-config-maven-plugin:2.2.3-SNAPSHOT:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=AllIn -DgenModule=web -DmoduleSuffix=$3 -Dcompany=$company -Dscop=web -X
+mvn -B com.tower.soafw:tower-config-maven-plugin:1.0.0-SNAPSHOT:config -DartifactId=$projectid -DdestDir=../../projects -Dmodel=AllIn -DgenModule=web -DmoduleSuffix=$3 -Dcompany=$company -Dscop=web -X
