@@ -141,7 +141,7 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
                 logger.info("成功加载file配置：" + file);
             }
         } catch (Exception ex) {
-        	logger.error("加载配置文件'" + file + "' 出错：",ex);
+        	logger.error("加载配置文件'" + file + "' 出错：",ex.getMessage());
         }
         if (!StringUtil.isEmpty(getProfile())) {
             try {
@@ -153,7 +153,7 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
                     logger.info("成功加载file配置：" + file);
                 }
             } catch (Exception ex) {
-                logger.error("加载配置文件'" + file + "' 出错：",ex);
+                logger.error("加载配置文件'" + file + "' 出错：",ex.getMessage());
             }
         }
         /**
@@ -167,7 +167,7 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
                 logger.info("成功加载file配置：" + file);
             }
         } catch (Exception ex) {
-            logger.error("加载配置文件'" + file + "' 出错：",ex);
+            logger.error("加载配置文件'" + file + "' 出错：",ex.getMessage());
         }
         if (!StringUtil.isEmpty(getProfile())) {
             try {
@@ -178,7 +178,7 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
                     logger.info("成功加载file配置：" + file);
                 }
             } catch (Exception ex) {
-            	logger.error("加载配置文件'" + file + "' 出错：",ex);
+            	logger.error("加载配置文件'" + file + "' 出错：",ex.getMessage());
             }
         }
         /**
@@ -197,7 +197,7 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
                     logger.info("成功加载zookeeper配置：" + zkServers + File.separator + "config" + File.separator + _settingFileName);
                 }
             } catch (Exception ex) {
-                logger.error(zkServers + File.separator + "config" + File.separator + _settingFileName + " zookeeper配置没有找到",ex);
+                logger.error(zkServers + File.separator + "config" + File.separator + _settingFileName + " zookeeper配置没有找到",ex.getMessage());
             }
             try {
                 if (!StringUtil.isEmpty(getProfile())) {
@@ -209,7 +209,7 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
                     }
                 }
             } catch (Exception ex) {
-                logger.error(zkServers + "/config/" + getProfile() + _settingFileName + " zookeeper配置没有找到",ex);
+                logger.error(zkServers + "/config/" + getProfile() + _settingFileName + " zookeeper配置没有找到",ex.getMessage());
             }
         }
         // }
@@ -229,7 +229,7 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
                     logger.info("成功加载file配置：" + file);
                 }
             } catch (Exception ex) {
-                logger.info("加载配置文件'" + file + "'出错："+ex.getMessage());
+                logger.info("加载配置文件'" + file + "'出错：",ex.getMessage());
             }
             if (!StringUtil.isEmpty(getProfile())) {
                 try {
@@ -243,7 +243,7 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
                     }
 
                 } catch (Exception ex) {
-                    logger.info("加载配置文件'" + file + "'出错："+ex.getMessage());
+                    logger.info("加载配置文件'" + file + "'出错：",ex.getMessage());
                 }
             }
             /**
