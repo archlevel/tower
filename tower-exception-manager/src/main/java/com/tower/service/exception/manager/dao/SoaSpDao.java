@@ -7,17 +7,17 @@ import java.sql.Statement;
 import java.util.List;
 
 import com.google.common.collect.Lists;
-import com.tower.service.exception.manager.model.KjtSoaSp;
+import com.tower.service.exception.manager.model.TowerSoaSp;
 
 /**
  * Created by kevin on 15/1/13.
  */
-public class KjtSoaSpDao {
+public class SoaSpDao {
 
-    public List<KjtSoaSp> list(){
+    public List<TowerSoaSp> list(){
         String sql="select * from soa_provider ";
 
-        List<KjtSoaSp> ajkSoaSps= Lists.newArrayList();
+        List<TowerSoaSp> towerSoaSps= Lists.newArrayList();
         Statement statement= null;
         Connection connection=null;
         try {
@@ -25,11 +25,11 @@ public class KjtSoaSpDao {
             statement = connection.createStatement();
             ResultSet rs=statement.executeQuery(sql);
             while(rs.next()){
-                KjtSoaSp ajkSoaSp=new KjtSoaSp();
-                ajkSoaSp.setId(rs.getInt(1));
-                ajkSoaSp.setSp_name(rs.getString(2));
-                ajkSoaSp.setSp_description(rs.getString(3));
-                ajkSoaSps.add(ajkSoaSp);
+                TowerSoaSp towerSoaSp=new TowerSoaSp();
+                towerSoaSp.setId(rs.getInt(1));
+                towerSoaSp.setSp_name(rs.getString(2));
+                towerSoaSp.setSp_description(rs.getString(3));
+                towerSoaSps.add(towerSoaSp);
             }
             rs.close();
             statement.close();
@@ -37,18 +37,18 @@ public class KjtSoaSpDao {
         } catch (SQLException e) {
         }
 
-        return ajkSoaSps;
+        return towerSoaSps;
     }
-    public KjtSoaSp get(int id){
-        KjtSoaSp ajkSoaSp=new KjtSoaSp();
+    public TowerSoaSp get(int id){
+        TowerSoaSp towerSoaSp=new TowerSoaSp();
         if(id<=0){
-            ajkSoaSp.setId(0);
-            ajkSoaSp.setSp_name("框架");
-            return ajkSoaSp;
+            towerSoaSp.setId(0);
+            towerSoaSp.setSp_name("框架");
+            return towerSoaSp;
         }
         String sql="select * from soa_provider ";
 
-        List<KjtSoaSp> ajkSoaSps= Lists.newArrayList();
+        List<TowerSoaSp> towerSoaSps= Lists.newArrayList();
         Statement statement= null;
         Connection connection=null;
         try {
@@ -56,11 +56,11 @@ public class KjtSoaSpDao {
             statement = connection.createStatement();
             ResultSet rs=statement.executeQuery(sql);
             if(rs.next()){
-                ajkSoaSp=new KjtSoaSp();
-                ajkSoaSp.setId(rs.getInt(1));
-                ajkSoaSp.setSp_name(rs.getString(2));
-                ajkSoaSp.setSp_description(rs.getString(3));
-                ajkSoaSps.add(ajkSoaSp);
+                towerSoaSp=new TowerSoaSp();
+                towerSoaSp.setId(rs.getInt(1));
+                towerSoaSp.setSp_name(rs.getString(2));
+                towerSoaSp.setSp_description(rs.getString(3));
+                towerSoaSps.add(towerSoaSp);
             }
             rs.close();
             statement.close();
@@ -68,6 +68,6 @@ public class KjtSoaSpDao {
         } catch (SQLException e) {
         }
 
-        return ajkSoaSp;
+        return towerSoaSp;
     }
 }

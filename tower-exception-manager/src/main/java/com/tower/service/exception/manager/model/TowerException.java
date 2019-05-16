@@ -6,7 +6,7 @@ import com.tower.service.exception.basic.ExceptionType;
 /**
  * Created by kevin on 15/1/6.
  */
-public class KjtException {
+public class TowerException {
     private int id;
     private int code;
     private int type;
@@ -14,7 +14,7 @@ public class KjtException {
     private int spid;
     private int level;
     private ExceptionType exceptionType;
-    private KjtSoaSp ajkSoaSp;
+    private TowerSoaSp towerSoaSp;
     private ExceptionLevel exceptionLevel;
 
     public int getId() {
@@ -98,12 +98,12 @@ public class KjtException {
         }
     }
 
-    public KjtSoaSp getAjkSoaSp() {
-        return ajkSoaSp;
+    public TowerSoaSp gettowerSoaSp() {
+        return towerSoaSp;
     }
 
-    public void setAjkSoaSp(KjtSoaSp ajkSoaSp) {
-        this.ajkSoaSp = ajkSoaSp;
+    public void settowerSoaSp(TowerSoaSp towerSoaSp) {
+        this.towerSoaSp = towerSoaSp;
     }
 
     public ExceptionLevel getExceptionLevel() {

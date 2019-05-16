@@ -3,7 +3,7 @@ package com.tower.service.exception.manager.model;
 /**
  * Created by kevin on 15/1/13.
  */
-public class KjtSoaSp {
+public class TowerSoaSp {
     private int id;
     private String sp_name;
     private String sp_description;

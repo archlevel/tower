@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.Callable;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -827,4 +828,8 @@ public class DynamicRedisCache extends PrefixPriorityConfig implements Cache,
 		}
 	}
 
+	@Override
+	public <T> T get(Object o, Callable<T> callable) {
+		return null;
+	}
 }

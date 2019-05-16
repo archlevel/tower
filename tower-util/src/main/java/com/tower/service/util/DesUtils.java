@@ -207,7 +207,7 @@ public class DesUtils {
 	 */
 	public static void main(String[] args) {
 		try {
-			String test = "Kjt@)!$";
+			String test = "Tower@)!$";
 			DesUtils des = new DesUtils();// 自定义密钥32a024b11a5ac37f
 			System.out.println("加密前的字符：" + test);
 			String encStr = des.encrypt(test);

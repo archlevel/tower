@@ -3,9 +3,9 @@ package com.tower.service.exception.manager.servlet;
 import com.google.common.base.Strings;
 import com.tower.service.exception.basic.ExceptionLevel;
 import com.tower.service.exception.basic.ExceptionType;
-import com.tower.service.exception.manager.dao.KjtExceptionDao;
-import com.tower.service.exception.manager.dao.KjtSoaSpDao;
-import com.tower.service.exception.manager.model.KjtException;
+import com.tower.service.exception.manager.dao.ExceptionDao;
+import com.tower.service.exception.manager.dao.SoaSpDao;
+import com.tower.service.exception.manager.model.TowerException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ import java.io.IOException;
 /**
  * Created by kevin on 15/1/6.
  */
-public class AddKjtExceptionServlet extends HttpServlet {
+public class AddTowerExceptionServlet extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -39,21 +39,21 @@ public class AddKjtExceptionServlet extends HttpServlet {
     {
         req.setAttribute("types", ExceptionType.values());
         req.setAttribute("levels", ExceptionLevel.values());
-        req.setAttribute("sps",new KjtSoaSpDao().list());
+        req.setAttribute("sps",new SoaSpDao().list());
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/pages/add-exception.jsp");
         dispatcher .forward(req, resp);
     }
 
     private synchronized int add(int type,String message,int level,int spid){
-        KjtExceptionDao ajkExceptionDao = new KjtExceptionDao();
-        int maxCode =ajkExceptionDao.getMaxCode(type);
-        KjtException ajkException = new KjtException();
-        ajkException.setCode(++maxCode);
-        ajkException.setMessage(message);
-        ajkException.setType(type);
-        ajkException.setSpid(spid);
-        ajkException.setLevel(level);
-        ajkExceptionDao.addAjkException(ajkException);
-        return ajkException.getCode();
+        ExceptionDao towerExceptionDao = new ExceptionDao();
+        int maxCode =towerExceptionDao.getMaxCode(type);
+        TowerException towerException = new TowerException();
+        towerException.setCode(++maxCode);
+        towerException.setMessage(message);
+        towerException.setType(type);
+        towerException.setSpid(spid);
+        towerException.setLevel(level);
+        towerExceptionDao.addtowerException(towerException);
+        return towerException.getCode();
     }
 }

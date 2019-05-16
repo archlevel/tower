@@ -5,7 +5,7 @@
 	<!-- <localRepository>D:\.m2\repository</localRepository> -->
 
 	<pluginGroups>
-		<pluginGroup>com.kjt.service.common</pluginGroup>
+		<pluginGroup>com.tower.service.common</pluginGroup>
 		<pluginGroup>com.tower.soafw</pluginGroup>
 	</pluginGroups>
 

@@ -295,10 +295,10 @@ SELECT ... FROM property WHERE broker_id=? ORDER BY id LIMIT 40, 20
 
 ```
 举例：
-root:xxx_db> select BrokerId from ajk_propertys where proid-100=101960636; 
+root:xxx_db> select BrokerId from tower_propertys where proid-100=101960636; 
 1 row in set (5.11 sec)
 
-root:xxx_db> select BrokerId from ajk_propertys where proid=101960736;
+root:xxx_db> select BrokerId from tower_propertys where proid=101960736;
 1 row in set (0.00 sec)
 
 ```
@@ -319,9 +319,9 @@ root:xxx_db> select BrokerId from ajk_propertys where proid=101960736;
 
 ```
 举例：字段UserMobile varchar(15)
-root:xxx_db> select BrokerId from ajk_brokerextend where UserMobile = 15863194010 limit 1;           
+root:xxx_db> select BrokerId from tower_brokerextend where UserMobile = 15863194010 limit 1;           
 1 row in set (2.07 sec)
-root:xxx_db> select BrokerId from ajk_brokerextend where UserMobile = '18213821864' limit 1;              
+root:xxx_db> select BrokerId from tower_brokerextend where UserMobile = '18213821864' limit 1;              
 1 row in set (0.00 sec)
 ```
 

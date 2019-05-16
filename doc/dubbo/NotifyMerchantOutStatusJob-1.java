@@ -1,4 +1,4 @@
-package com.kjt.wmshub.web.quartzJob;
+package com.tower.wmshub.web.quartzJob;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -15,15 +15,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
-import com.kjt.platform.dubbo.operation.domain.AccountBooks;
-import com.kjt.wmshub.service.intf.IBaseService;
-import com.kjt.wmshub.service.intf.ICustomOrdersService;
-import com.kjt.wmshub.service.intf.IWmsDicService;
-import com.kjt.wmshub.service.intf.IWmsService;
-import com.kjt.wmshub.service.intf.vo.CustomOrders;
-import com.kjt.wmshub.service.intf.vo.MerchantBaseInfoVo;
-import com.kjt.wmshub.web.service.INotifyMerchantService;
-import com.kjt.wmshub.web.utils.Constants;
+import com.tower.platform.dubbo.operation.domain.AccountBooks;
+import com.tower.wmshub.service.intf.IBaseService;
+import com.tower.wmshub.service.intf.ICustomOrdersService;
+import com.tower.wmshub.service.intf.IWmsDicService;
+import com.tower.wmshub.service.intf.IWmsService;
+import com.tower.wmshub.service.intf.vo.CustomOrders;
+import com.tower.wmshub.service.intf.vo.MerchantBaseInfoVo;
+import com.tower.wmshub.web.service.INotifyMerchantService;
+import com.tower.wmshub.web.utils.Constants;
 
 /**
  * @ClassName: NotifyMerchantOutStatusJob
@@ -74,7 +74,7 @@ public class NotifyMerchantOutStatusJob extends QuartzJobBean {
 					String tableNameSuffix = "_";
 					logger.info("开始为账册[账册ID："+accountBooks.getAccountBookId()+"，关区代码："+accountBooks.getAccountBookCode()+"]推送出库信息。");
 					//设置默认账册
-					if(com.kjt.wmshub.web.common.Constants.AccountBook_ID.equals(accountBooks.getAccountBookId().toString())){
+					if(com.tower.wmshub.web.common.Constants.AccountBook_ID.equals(accountBooks.getAccountBookId().toString())){
 						tableNameSuffix = "";
 					} else {
 						tableNameSuffix = "_"+accountBooks.getAccountBookId();
@@ -105,7 +105,7 @@ public class NotifyMerchantOutStatusJob extends QuartzJobBean {
 		map.put("send_statuses", chars);
 		map.put("rowNumber", 1000);
 		//设置账册
-		map.put(com.kjt.wmshub.web.common.Constants.TABLE_NAME_SUFFIX, tableNameSuffix);
+		map.put(com.tower.wmshub.web.common.Constants.TABLE_NAME_SUFFIX, tableNameSuffix);
 		try {
 			List<CustomOrders> customOrdersList=customOrdersService.getOutStockOrdersByStatusAndSendStatus(map);
 			
@@ -152,9 +152,9 @@ public class NotifyMerchantOutStatusJob extends QuartzJobBean {
 		}
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("merchantCode", customOrders.getKjtCode());
+		map.put("merchantCode", customOrders.getTowerCode());
 		//设置账册
-		map.put(com.kjt.wmshub.web.common.Constants.TABLE_NAME_SUFFIX, customOrders.getTableNameSuffix());
+		map.put(com.tower.wmshub.web.common.Constants.TABLE_NAME_SUFFIX, customOrders.getTableNameSuffix());
 		List<MerchantBaseInfoVo> merchantList = wmsDicService.getMerchantAndTradeInfo(map);
 		
 		if (merchantList.isEmpty()) {
@@ -162,7 +162,7 @@ public class NotifyMerchantOutStatusJob extends QuartzJobBean {
 		} else {
 			String deliveryOutNotifyUrl = merchantList.get(0).getDeliveryOutNotifyUrl();
 			if (deliveryOutNotifyUrl == null || (deliveryOutNotifyUrl=deliveryOutNotifyUrl.trim()).isEmpty()) {
-				msg = "订单" + customOrders.getMerchantOrderId() + "的商户" + customOrders.getKjtCode() + "没有配置出库通知URL！";
+				msg = "订单" + customOrders.getMerchantOrderId() + "的商户" + customOrders.getTowerCode() + "没有配置出库通知URL！";
 			} else {
 				String className = merchantList.get(0).getNotifyClassName();
 				

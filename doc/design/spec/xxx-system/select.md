@@ -10,7 +10,7 @@
 
 ##### ② 精选单价计算API
 
-+ [xx 精选单价计算API](ppcTrade-ajkAmountCalc.md)
++ [xx 精选单价计算API](ppcTrade-towerAmountCalc.md)
 
 + [yy 精选单价计算API](ppcTrade-zfAmountCalc.md)
 

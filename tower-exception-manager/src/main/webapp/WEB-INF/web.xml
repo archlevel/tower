@@ -17,11 +17,11 @@
 	
 	<servlet>
 		<servlet-name>Add</servlet-name>
-		<servlet-class>com.tower.service.exception.manager.servlet.AddKjtExceptionServlet</servlet-class>
+		<servlet-class>com.tower.service.exception.manager.servlet.AddTowerExceptionServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>List</servlet-name>
-		<servlet-class>com.tower.service.exception.manager.servlet.ListKjtExceptionServlet</servlet-class>
+		<servlet-class>com.tower.service.exception.manager.servlet.ListTowerExceptionServlet</servlet-class>
 	</servlet>
 
 	<!-- ... -->

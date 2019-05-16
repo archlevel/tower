@@ -63,12 +63,12 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>tower-exception-manager</finalName>
+        <finalName>tower-manager</finalName>
         <plugins>
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
+                <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>8.1.6.v20120903</version>
+                <version>9.4.18.v20190429</version>
 
                 <configuration>
                     <connectors>
@@ -79,10 +79,8 @@
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                     <stopKey>foo</stopKey>
                     <stopPort>9999</stopPort>
-
-
                     <webAppConfig>
-                        <contextPath>/tower-exception-manager</contextPath>
+                        <contextPath>/tower-manager</contextPath>
                     </webAppConfig>
                 </configuration>
                 <executions>

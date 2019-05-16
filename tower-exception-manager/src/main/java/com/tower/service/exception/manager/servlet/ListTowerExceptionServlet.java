@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.common.base.Strings;
-import com.tower.service.exception.manager.service.KjtSoaExceptionService;
+import com.tower.service.exception.manager.service.TowerSoaExceptionService;
 
 /**
  * Created by kevin on 15/1/6.
  */
-public class ListKjtExceptionServlet extends HttpServlet {
+public class ListTowerExceptionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException
     {
@@ -38,7 +38,7 @@ public class ListKjtExceptionServlet extends HttpServlet {
         }
 
 
-        req.setAttribute("list",new KjtSoaExceptionService().list(sCode));
+        req.setAttribute("list",new TowerSoaExceptionService().list(sCode));
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/pages/list-exception.jsp");
 
         dispatcher .forward(req, resp);

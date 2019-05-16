@@ -2,6 +2,7 @@ package com.tower.service.cache.mem.impl;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.Callable;
 
 import javax.annotation.PostConstruct;
 
@@ -508,4 +509,9 @@ public class DynamicMemCache extends PrefixPriorityConfig
 		}
         return returnValueWrapper;
 	}
+
+    @Override
+    public <T> T get(Object o, Callable<T> callable) {
+        return null;
+    }
 }

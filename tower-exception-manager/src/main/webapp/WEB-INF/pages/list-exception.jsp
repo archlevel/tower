@@ -26,7 +26,7 @@
    <tr>
        <td>${exception.fullCode}</td>
         <td>${exception.enumKey}</td>
-        <td>${exception.ajkSoaSp.sp_name}</td>
+        <td>${exception.towerSoaSp.sp_name}</td>
         <td>${exception.exceptionLevel.name}</td>
        <td>${exception.exceptionType.name}</td>
        <td>${exception.message}</td>
