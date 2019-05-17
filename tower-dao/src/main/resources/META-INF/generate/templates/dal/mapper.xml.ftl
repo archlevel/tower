@@ -4,15 +4,19 @@
     "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 
 <mapper namespace="${package}.dao.ibatis.mapper.${name}Mapper">
-	<resultMap id="BaseResultMap" type="${package}.dao.model.${name}">		
-		
+	<resultMap id="BaseResultMap" type="${package}.dao.model.${name}">
+
 		<#list cols as col>
 			<#if col.isPK="yes" && tab.pkFieldNum==1>
-			<#if col.type.javaType="Integer" || col.type.javaType="Long" || col.type.javaType="Float" || col.type.javaType="Double" || col.type.javaType="java.math.BigInteger" || col.type.javaType="String">
-			<id property="id" column="${col.name}" />
+				<#if col.type.javaType="Integer" || col.type.javaType="Long" || col.type.javaType="Float" || col.type.javaType="Double" || col.type.javaType="java.math.BigInteger" || col.type.javaType="String">
+					<id property="id" column="${col.name}" />
+				</#if>
 			</#if>
-			<#else>
-			<result property="${col.fieldName}" column="${col.name}" />
+		</#list>
+
+		<#list cols as col>
+			<#if col.isPK="no">
+					<result property="${col.fieldName}" column="${col.name}" />
 			</#if>
 		</#list>
 	</resultMap>

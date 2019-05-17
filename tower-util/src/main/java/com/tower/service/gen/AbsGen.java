@@ -48,6 +48,7 @@ public class AbsGen {
 	    File file_ = new File(dir);
 	    file_.mkdirs();
 	    file_ = new File(file);
+
 	    // file_.createNewFile();
 	    t.process(params, new OutputStreamWriter(new FileOutputStream(file_.getAbsolutePath())));
 	  }
