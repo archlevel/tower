@@ -16,7 +16,10 @@ public class ServiceGen {
 
 	static String pkgName = "com.#{company}.service.#{artifactId}";//包名，建议不要修改
 	
-	static String path = new File(".").getAbsoluteFile().getParentFile().getAbsoluteFile().getParentFile().getAbsolutePath();//项目绝对路径，建议不要修改
+	static String serviceGenPath = ServiceGen.class.getResource("/").getPath();
+
+    static String path = new File(serviceGenPath).getAbsoluteFile().getParentFile().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath();//项目绝对路径，建议不要修改
+
 	static String Domain_Project_Path = path+"/#{artifactId}-domain/src/main/java/";//#{artifactId}-domain 项目路径，建议不要修改
 	static String Service_Project_Path = path+"/#{artifactId}-service/src/main/java/";//#{artifactId}-service 项目路径，建议不要修改
 	static String Service_Impl_Project_Path = path+"/#{artifactId}-service-impl/src/main/java/";//#{artifactId}-service-impl 项目路径，建议不要修改

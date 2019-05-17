@@ -15,6 +15,50 @@
 ### 安装第三方jar；
     + cd tower-tools 目录
     + 执行 install.sh命令
+    
+### 安装docker
++ brew install docker
+
+###下载mysql镜像
++ docker pull mysql
+
+### 启动mysql实例
++ docker run --name mysoa -p 3206:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest
+```
+
+--name 后面的是docker容器名
+-p 32xxx:3306 这里需要注意 `32xxx` 是你**链接mysql的时候的`Port`。**
+-e MYSQL_ROOT_PASSWORD 是设置mysql的root账号密码
+-d mysql 是你的镜像标签
+
+```
+
+###在shell中访问mysql日志
++ docker logs mysoa
+
+###在shell中访问mysql
++ docker exec -it mysoa bash
+
+###登陆myslq
++ mysql -u root -p
+
+###查看用户信息
++ mysql> select host,user,plugin,authentication_string from mysql.user;
+
++ 备注：host为 % 表示不限制ip   localhost表示本机使用    plugin非mysql_native_password 则需要修改密码
+
++ mysql> ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
+
+```
+
+使用常用工具链接mysql
+ 
+Host: 　　　　127.0.0.1
+Username:　　root
+Password: 　  123456
+Port: 　　　　 3206
+
+```
 
 ### 安装Jenkins（构件）
 
