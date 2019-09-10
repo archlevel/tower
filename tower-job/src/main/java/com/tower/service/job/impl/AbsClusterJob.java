@@ -40,6 +40,7 @@ public abstract class AbsClusterJob<T> extends QuartzJobBean implements IJob<T> 
 		start();
 	}
 
+	@Override
 	final public void start() {
 		if (logger.isInfoEnabled()) {
 			logger.info("start() - start"); //$NON-NLS-1$
@@ -93,6 +94,7 @@ public abstract class AbsClusterJob<T> extends QuartzJobBean implements IJob<T> 
 		}
 	}
 
+	@Override
 	public void onError(JobException ex) {
 		if (logger.isInfoEnabled()) {
 			logger.info("onError(Exception ex={}) - start", ex); //$NON-NLS-1$
@@ -120,6 +122,7 @@ public abstract class AbsClusterJob<T> extends QuartzJobBean implements IJob<T> 
 		return failed;
 	}
 
+	@Override
 	public void onSuccessed() {
 		if (logger.isInfoEnabled()) {
 			logger.info("onSuccessed()");

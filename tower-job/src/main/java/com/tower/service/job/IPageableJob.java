@@ -11,17 +11,6 @@ import java.util.List;
 public interface IPageableJob<T> extends IJob<T>{
 
     /**
-     * 发生异常调用该类
-     * 
-     * @param ex
-     */
-    public void onError(JobException ex);
-
-    /**
-     * 成功是调用该方法
-     */
-    public void onSuccessed();
-    /**
      * 获取总页数
      * @return
      */

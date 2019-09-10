@@ -143,6 +143,7 @@ public abstract class JobBase<T> implements IJob<T>,IConfigChangeListener,Initia
 		this.newStart = newStart;
 	}
 
+	@Override
 	public final void start() {
         
 		CacheSwitcher.set(Boolean.valueOf(config.getString(config.getPrefix()+"X-Cached", System.getProperty("X-Cached","true"))));
@@ -175,7 +176,7 @@ public abstract class JobBase<T> implements IJob<T>,IConfigChangeListener,Initia
 	protected void pausedCheck(String status){
     	while("pause".equalsIgnoreCase(this.getStatus())){
     		try {
-				Thread.currentThread().sleep(1000);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 			}
     		logger.info("{} has paused",status);
@@ -189,6 +190,7 @@ public abstract class JobBase<T> implements IJob<T>,IConfigChangeListener,Initia
         return id;
     }
 
+    @Override
     public void onError(JobException ex) {
     	logger.info("onError(Exception ex={}) - start", ex); //$NON-NLS-1$
         throw ex;
@@ -214,6 +216,7 @@ public abstract class JobBase<T> implements IJob<T>,IConfigChangeListener,Initia
         return failed;
     }
 
+    @Override
     public void onSuccessed() {
         if (logger.isInfoEnabled()) {
             logger.info("onSuccessed()"); //$NON-NLS-1$
@@ -242,6 +245,7 @@ public abstract class JobBase<T> implements IJob<T>,IConfigChangeListener,Initia
         this.scheduler = scheduler;
     }
 
+    @Override
     public synchronized void configChanged() {
     	if(trigger!=null){
     		String cronExpression = trigger.getCronExpression();
