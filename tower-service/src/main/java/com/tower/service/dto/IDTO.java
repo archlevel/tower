@@ -1,5 +1,7 @@
 package com.tower.service.dto;
 
-public interface IDTO {
+import java.io.Serializable;
+
+public interface IDTO extends Serializable {
 
 }

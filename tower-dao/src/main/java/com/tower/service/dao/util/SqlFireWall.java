@@ -46,6 +46,7 @@ public class SqlFireWall extends PrefixPriorityConfig {
 		this.build(this.getConfig());
 	}
 
+	@Override
 	protected void build(Configuration config) {
 
 		String prefix_ = this.getPrefix();

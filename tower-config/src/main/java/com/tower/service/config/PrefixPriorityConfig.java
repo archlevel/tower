@@ -311,6 +311,7 @@ public class PrefixPriorityConfig extends DynamicConfig {
 		}
 	}
 
+	@Override
 	protected String configToString(Configuration config) {
 		StringBuilder sb = new StringBuilder();
 		if(!StringUtil.isEmpty(this.prefix)){

@@ -394,7 +394,6 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
         }
     }
 
-
     protected String configToString(Configuration config) {
         if (config == null) {
             return "";
@@ -417,6 +416,7 @@ public class DynamicConfig implements ConfigFileDict, Constants, Configuration,
      * @param config
      */
     protected void build(Configuration config) {
+        delegate = config;
     }
 
     @Override

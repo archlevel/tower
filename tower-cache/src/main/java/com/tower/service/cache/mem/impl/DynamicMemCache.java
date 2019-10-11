@@ -282,6 +282,7 @@ public class DynamicMemCache extends PrefixPriorityConfig
 		}
     }
     private String lastPoolName = null;
+    @Override
     public void build(Configuration config) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("build(" + new ToStringBuilder("", StandardToStringStyle.SIMPLE_STYLE).append("Configuration config", config).toString() + ") - start"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
@@ -349,6 +350,7 @@ public class DynamicMemCache extends PrefixPriorityConfig
 		}
     }
 
+    @Override
     protected String configToString(Configuration config) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("configToString(" + new ToStringBuilder("", StandardToStringStyle.SIMPLE_STYLE).append("Configuration config", config).toString() + ") - start"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$

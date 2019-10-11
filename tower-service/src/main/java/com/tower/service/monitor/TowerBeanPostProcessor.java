@@ -11,7 +11,7 @@ import com.tower.service.log.LoggerFactory;
 public class TowerBeanPostProcessor implements BeanPostProcessor{
 
 	private Logger logger = LoggerFactory.getLogger(TowerBeanPostProcessor.class);
-	private long start = 0l;
+	private long start = 0L;
 	@Override
 	public Object postProcessBeforeInitialization(Object bean, String beanName)
 			throws BeansException {

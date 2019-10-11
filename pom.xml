@@ -81,6 +81,7 @@
 	<modules>
 		<module>tower-annotation</module>
 		<module>tower-util</module>
+		<module>tower-json</module>
 		<module>tower-log</module>
 		<module>tower-config</module>
 		<module>tower-cache</module>

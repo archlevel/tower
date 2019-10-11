@@ -91,6 +91,12 @@
 			<version>2.3.16</version>
 		</dependency>
 		<dependency>
+			<groupId>jp.sourceforge.qrcode</groupId>
+			<artifactId>qrcode</artifactId>
+			<version>3.0</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.belerweb</groupId>
 			<artifactId>pinyin4j</artifactId>
 			<version>2.5.0</version>
