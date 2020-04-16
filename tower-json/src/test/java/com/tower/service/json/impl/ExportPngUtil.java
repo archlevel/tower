@@ -1,5 +1,5 @@
 package com.tower.service.json.impl;
-
+/*
 import com.xncoding.echarts.api.model.jmh.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,7 +7,7 @@ import okhttp3.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List;*/
 
 /**
  * ExportPngUtil
@@ -17,6 +17,7 @@ import java.util.List;
  * @since 2018/2/24
  */
 public class ExportPngUtil {
+/*
 
     public static void postOption(String optionStr, String url) throws Exception {
         final MediaType TEXT = MediaType.parse("application/text; charset=utf-8");
@@ -81,5 +82,6 @@ public class ExportPngUtil {
         }
         return jsonString;
     }
+*/
 
 }

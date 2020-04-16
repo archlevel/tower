@@ -29,7 +29,7 @@ public class JsonSerializeBenchmark {
                 .warmupIterations(0)
                 .build();
         Collection<RunResult> results =  new Runner(opt).run();
-        ResultExporter.exportResult("JSON序列化性能", results, "count", "秒");
+        //ResultExporter.exportResult("JSON序列化性能", results, "count", "秒");
     }
 
     @Benchmark

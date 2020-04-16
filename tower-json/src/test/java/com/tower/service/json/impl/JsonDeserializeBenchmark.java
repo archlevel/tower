@@ -5,7 +5,7 @@ import org.openjdk.jmh.results.RunResult;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
-import ro.nextreports.engine.exporter.ResultExporter;
+//import ro.nextreports.engine.exporter.ResultExporter;
 
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
@@ -29,7 +29,7 @@ public class JsonDeserializeBenchmark {
                 .warmupIterations(0)
                 .build();
         Collection<RunResult> results =  new Runner(opt).run();
-        ResultExporter.exportResult("JSON反序列化性能", results, "count", "秒");
+//        ResultExporter.exportResult("JSON反序列化性能", results, "count", "秒");
     }
 
     @Benchmark

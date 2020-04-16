@@ -1,15 +1,18 @@
 package com.tower.service.log;
 
-import java.io.Serializable;
+
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.tower.service.json.impl.SimpleValueFilter;
 
-public class LogData extends Serializable {
+import java.io.Serializable;
 
-    @JsonProperty(ordinal = 1)
+public class LogData implements Serializable {
+
+    @JsonProperty( index= 1)
     protected String requestId;
 
-    @JsonProperty(ordinal = 2)
+    @JsonProperty(index = 2)
     protected String reqNum;
 
 

@@ -11,10 +11,8 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jsonrpc.version>1.5.3</jsonrpc.version>
 		<jetty.version>9.4.8.v20171121</jetty.version>
 		<sentinel.version>1.4.2</sentinel.version>
-		<jackson.version>2.8.0</jackson.version>
 	</properties>
 	<dependencies>
 
@@ -51,7 +49,6 @@
 		<dependency>
 			<groupId>com.github.briandilley.jsonrpc4j</groupId>
 			<artifactId>jsonrpc4j</artifactId>
-			<version>${jsonrpc.version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>jackson-annotations</artifactId>
@@ -75,7 +72,6 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>${jackson.version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>jackson-annotations</artifactId>
@@ -89,10 +85,30 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-servlet</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
+			<artifactId>servlet-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.github.briandilley.jsonrpc4j</groupId>
+			<artifactId>jsonrpc4j</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.portlet</groupId>
+			<artifactId>portlet-api</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
