@@ -12,7 +12,7 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<dubbo.version>2.6.6</dubbo.version>
+		<dubbo.version>2.6.12</dubbo.version>
 	</properties>
 	<dependencies>
 
