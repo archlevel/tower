@@ -39,7 +39,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<memcached.version>2.6.6</memcached.version>
 		<mybatis.version>3.2.8</mybatis.version>
-		<mysql.version>5.1.26</mysql.version>
+		<mysql.version>8.0.28</mysql.version>
 		<mail.version>1.4.1</mail.version>
 		<jedis.version>3.0.1</jedis.version>
 		<junit.version>4.11</junit.version>
